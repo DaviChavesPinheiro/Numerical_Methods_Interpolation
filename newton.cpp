@@ -16,13 +16,13 @@ private:
     vector<Point> p;
 
     void createTable() {
-        // Inicializa a primeira coluna da tabela com os valores de f(x)
+        // Initialize the first columns of the table with the values of f(x)
         for (int y = 0; y < p.size(); y++) {
             t.push_back(vector<double>(1));
             t[y][0] = p[y].y;
         }
         
-        // Reserva espaco na tabela
+        // Reserve espaco na tabela
         for (int i = 0; i < p.size(); i++)
             t[i].resize(p.size() - i);
 
