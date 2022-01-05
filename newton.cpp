@@ -22,11 +22,11 @@ private:
             t[y][0] = p[y].y;
         }
         
-        // Reserve espaco na tabela
+        // Allocates space on the table
         for (int i = 0; i < p.size(); i++)
             t[i].resize(p.size() - i);
 
-        // Calcula o resto dos valores da tabela
+        // Computes the rest of the table values
         for (int x = 1; x < p.size(); x++)
             for (int y = 0; y < p.size() - x; y++) {
                 t[y][x] = (t[y + 1][x - 1] - t[y][x - 1]) / (p[y + x].x - p[y].x);
@@ -35,11 +35,11 @@ private:
     }
 
     void addTablePoint(Point point) {
-        // Adiciona o f[xn]
+        // Adds f[xn]
         t.push_back(vector<double>(1));
         t[t.size() - 1][0] = point.y;
 
-        // Adiciona as outras diferencas divididas
+        // Adds the other divided differences
         for (int i = 1; i < t.size(); i++)
         {
             int x = i;
@@ -48,7 +48,7 @@ private:
         }
     }
 
-    // Calcula o produtos das diferencas: (x - x0)(x - x1) ... (x - xk-1)
+    // Computes the Difference Product: (x - x0)(x - x1) ... (x - xk-1)
     double proterm(double x, int k) {
         double pro = 1;
         for (int i = 0; i < k; i++)
