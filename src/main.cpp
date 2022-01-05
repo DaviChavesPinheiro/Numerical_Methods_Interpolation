@@ -26,8 +26,9 @@ int main(int argc, char const *argv[])
 
     // Lagrange
     cout << "Lagrange\n";
-    double px = 2;
-    cout << lagrange(p, px) << "\n";
+    Lagrange lagrange(p);
+    lagrange.print_polynomial();
+    cout << "f(" << 2 << "): " << lagrange.calculate(2) << "\n";
 
     cout << "\n";
 
@@ -35,7 +36,8 @@ int main(int argc, char const *argv[])
     cout << "Newton\n";
     Newton newton(p);
     newton.print_polynomial();
-
+    cout << "f(" << 2 << "): " << newton.calculate(2) << "\n";
+    
     vector<Point> p2 = { // points
         {0.1, 1.221},
         {0.6, 3.320},
