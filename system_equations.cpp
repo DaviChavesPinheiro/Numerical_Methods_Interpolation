@@ -16,7 +16,8 @@ void print_polynomial(vector<double> a) {
     cout << "\n";
 }
 
-vector<double> substituicoes_retroativas_superior(vector<vector<double>> const &A, vector<double> const &b, int n) {
+vector<double> substituicoes_retroativas_superior(vector<vector<double>> const &A, vector<double> const &b) {
+    int n = A.size();
     vector<double> x(n);
     x[n - 1] = b[n - 1]/A[(n - 1)][(n - 1)];
     for (int i = n - 2; i >= 0; i--)
@@ -29,7 +30,8 @@ vector<double> substituicoes_retroativas_superior(vector<vector<double>> const &
     return x;
 }
 
-vector<double> gauss(vector<vector<double>> A, vector<double> b, int n) {
+vector<double> gauss(vector<vector<double>> A, vector<double> b) {
+    int n = A.size();
     for (int k = 0; k < n; k++)
     {
         for (int i = k + 1; i < n; i++)
@@ -41,7 +43,7 @@ vector<double> gauss(vector<vector<double>> A, vector<double> b, int n) {
             b[i] += m * b[k];
         }
     }
-    return substituicoes_retroativas_superior(A, b, n);
+    return substituicoes_retroativas_superior(A, b);
 }
 
 vector<double> system_equation(vector<Point> p) {
@@ -56,7 +58,7 @@ vector<double> system_equation(vector<Point> p) {
     for (int y = 0; y < pts; y++)
         b[y] = p[y].y;
     
-    return gauss(A, b, pts);
+    return gauss(A, b);
 }
 
 int main(int argc, char const *argv[])
