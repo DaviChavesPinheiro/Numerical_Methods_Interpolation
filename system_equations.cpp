@@ -1,13 +1,8 @@
 #include <iostream>
-#include <vector>
 #include <math.h>
+#include "system_equations.hpp"
 
-using namespace std;
-
-typedef struct
-{
-    double x, y;
-} Point;
+using std::cout;
 
 void print_polynomial(vector<double> a) {
     cout << "f(x) = " << a[0];
@@ -59,18 +54,4 @@ vector<double> system_equation(vector<Point> p) {
         b[y] = p[y].y;
     
     return gauss(A, b);
-}
-
-int main(int argc, char const *argv[])
-{
-    vector<Point> p = { // points
-        {-5, 3},
-        {2, -2},
-        {5, 3}, 
-        {7, 1}
-    };
-    
-    vector<double> x = system_equation(p);
-    print_polynomial(x);
-    return 0;
 }

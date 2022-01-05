@@ -1,18 +1,9 @@
 #include <iostream>
-#include <vector>
+#include "lagrange.hpp"
+using std::cout;
 
-using namespace std;
-
-typedef struct
-{
-    double x, y;
-} Point;
-
-void print_polynomial(vector<double> a) {
-    cout << "f(x) = " << a[0];
-    for (int i = 1; i < a.size(); i++)
-        cout << " + " << a[i] << "*x^" << i;
-    cout << "\n";
+void print_lagrange_polynomial(vector<double> a) {
+    std::cerr << "No implementation\n";
 }
 
 double L(int k, double x, vector<Point> const &p) {
@@ -31,27 +22,4 @@ double lagrange(vector<Point> p, double x) {
         py += p[i].y * L(i, x, p);
 
     return py;
-}
-
-int main(int argc, char const *argv[])
-{
-    vector<Point> p = { // points
-        {-5, 3},
-        {2, -2},
-        {5, 3}, 
-        {7, 1}
-    };
-
-    double px = 2;
-    
-    cout << "Pn(x) =";
-    for (int i = 0; i < p.size(); i++)
-    {
-        cout << " y" << i << "L" << i << "(x)";
-        if(i < p.size() - 1) cout << " +";
-    }
-    cout << "\n";
-
-    cout << lagrange(p, px) << "\n";
-    return 0;
 }
