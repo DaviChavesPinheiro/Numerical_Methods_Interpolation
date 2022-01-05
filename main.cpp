@@ -4,6 +4,7 @@
 #include "system_equations.hpp"
 #include "lagrange.hpp"
 #include "newton.hpp"
+#include "inverse_interpolation.hpp"
 using std::vector; using std::cout;
 
 int main(int argc, char const *argv[])
@@ -33,5 +34,18 @@ int main(int argc, char const *argv[])
     cout << "Newton\n";
     Newton newton(p);
     newton.print_polynomial();
+
+    vector<Point> p2 = { // points
+        {0.1, 1.221},
+        {0.6, 3.320},
+        {0.8, 4.953}, 
+    };
+
+    cout << "\n";
+
+    // Inverse Interpolation
+    cout << "Inverse Interpolation\n";
+    InverseInterpolation invInter(p2);
+    invInter.print_polynomial();
     return 0;
 }
