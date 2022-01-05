@@ -18,8 +18,9 @@ int main(int argc, char const *argv[])
     
     // System Equations
     cout << "System Equations\n";
-    vector<double> x1 = system_equation(p);
-    print_polynomial(x1);
+    SystemEquations systemEquations(p);
+    systemEquations.print_polynomial();
+    cout << "f(" << 2 << "): " << systemEquations.calculate(2) << "\n";
 
     cout << "\n";
 
